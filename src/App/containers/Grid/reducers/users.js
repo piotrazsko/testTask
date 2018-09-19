@@ -10,8 +10,6 @@ const initialState = {
 };
 
 function users(state = initialState, action) {
-    console.log(action);
-
   switch (action.type) {
     case ACTION_GET_USER_SUCCESS:
       return state;

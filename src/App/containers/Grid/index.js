@@ -12,7 +12,7 @@ import { SimpleTable } from '../../components';
 class Grid extends Component {
     componentWillMount() {
         let {actions:{ getUsersDateResponce}} = this.props;
-        getUsersDateResponce();
+        getUsersDateResponce('test_data');
     }
 
     render() {

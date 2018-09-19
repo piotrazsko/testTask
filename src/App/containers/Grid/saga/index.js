@@ -5,10 +5,10 @@ import  {getUsersDateSuccess} from  '../actions'
 import {ACTION_GET_USER_RESPONSE} from  '../constants'
 
 
-export function* getUserData() {
-    console.log('test');
+export function* getUserData(action) {
+
   yield call(delay,1000)
-  yield put(getUsersDateSuccess('data-1000'))
+  yield put(getUsersDateSuccess({data:'data-1000'}))
 }
 
 export function* watchGetUsersData() {

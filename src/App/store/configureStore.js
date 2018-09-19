@@ -7,5 +7,9 @@ import { rootReducer } from '../reducers';
 const reduxDevtools = window.__REDUX_DEVTOOLS_EXTENSION__;
 const sagaMiddleware = createSagaMiddleware();
 
-export const store = createStore(rootReducer, compose(reduxDevtools && reduxDevtools(), applyMiddleware(sagaMiddleware)))
+const composes = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+const store = createStore(rootReducer, composes(applyMiddleware(sagaMiddleware)))
+
 sagaMiddleware.run(rootSaga);
+
+export {store}
