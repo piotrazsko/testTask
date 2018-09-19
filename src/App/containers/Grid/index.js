@@ -11,8 +11,8 @@ import { SimpleTable } from '../../components';
 
 class Grid extends Component {
     componentWillMount() {
-        let {actions:{ getUsersDateResponce}} = this.props;
-        getUsersDateResponce('test_data');
+        let {actions:{ getUsersDataRequest}} = this.props;
+        getUsersDataRequest();
     }
 
     render() {

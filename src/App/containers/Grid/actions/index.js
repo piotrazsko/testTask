@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import  {ACTION_GET_USER_SUCCESS, ACTION_GET_USER_RESPONSE} from '../constants'
+import  { ACTION_GET_USERS_SUCCESS, ACTION_GET_USERS_REQUEST } from '../constants'
 
-export const getUsersDateSuccess = createAction(ACTION_GET_USER_SUCCESS);
-export const getUsersDateResponce = createAction(ACTION_GET_USER_RESPONSE);
+export const getUsersDataSuccess = createAction(ACTION_GET_USERS_SUCCESS);
+export const getUsersDataRequest = createAction(ACTION_GET_USERS_REQUEST);

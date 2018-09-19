@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import gridReducers from '../containers/Grid/reducers';
+import users_data from '../containers/Grid/reducers';
 
 export const rootReducer = combineReducers({
-    gridReducers
+    users_data
 })
