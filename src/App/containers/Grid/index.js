@@ -22,11 +22,13 @@ class Grid extends Component {
         this.selectChangeHandler = this.selectChangeHandler.bind(this);
         this.inputChangeHandler = this.inputChangeHandler.bind(this);
         this.headerClickHandler = this.headerClickHandler.bind(this);
+        this.getPrevPage = this.getPrevPage.bind(this);
+        this.getNextPage = this.getNextPage.bind(this);
         this.state = {
             sotred_key: null,
             filter_gender: null,
             search_string: null,
-            page:1
+            current_page:1
         }
     }
 
@@ -42,8 +44,8 @@ class Grid extends Component {
         let {actions: {
                 getUsersDataRequest
             }} = this.props;
-            const { page }= this.state;
-        getUsersDataRequest(page);
+            const { current_page }= this.state;
+        getUsersDataRequest(current_page);
     }
 
     selectChangeHandler(event) {
@@ -62,6 +64,24 @@ class Grid extends Component {
         const key = event.target.getAttribute('key-attr');
         sortUsers(key)
         this.setState({sorted_key:key})
+    }
+    getPrevPage(){
+        let {current_page} = this.state
+        let {actions: {
+                getUsersDataRequest
+            }} = this.props;
+        getUsersDataRequest(current_page--);
+        this.setState({current_page})
+
+    }
+    getNextPage(){
+        let {current_page} = this.state
+        let {actions: {
+                getUsersDataRequest
+            }} = this.props;
+        getUsersDataRequest(current_page++);
+        this.setState({current_page})
+
     }
 
     render() {
@@ -105,7 +125,7 @@ class Grid extends Component {
                     </Select>
                 </FormControl>
             </div>
-            <div></div>
+            <div><button onClick={this.getPrevPage}>prev</button><button onClick={this.getNextPage}>next</button></div>
             <SimpleTable rows_data={users} head_data={head_data} headerClickHandler = {this.headerClickHandler}/>
         </div>);
     }
