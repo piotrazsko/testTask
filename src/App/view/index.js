@@ -1,10 +1,9 @@
 import React from 'react';
-// import { Router, Route, Switch } from 'react-router';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route  } from "react-router-dom";
 import { Header } from '../components';
 import {Grid} from '../containers';
 
-const MainPage = ({}) => (
+const MainPage = () => (
     <div>
         <Header/>
         <Router>

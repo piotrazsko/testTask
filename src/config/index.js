@@ -1,7 +1,7 @@
 import baseConfig from './base';
 
 const config = {
-  isActiveDevTool: true,
+  isActiveDevTool: false,
   baseUrl: 'http://localhost:3000',
 };
 

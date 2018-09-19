@@ -1,11 +1,10 @@
-import { call, put, takeEvery, select } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import _ from 'lodash';
 
 import ApiMethods from '../utils/api';
 import ApiService from '../utils/services/API';
 
 function* callAPI(action) {
-    console.log(action);
   let data = ApiMethods[_.camelCase(action.type)](action.payload);
 
   try {

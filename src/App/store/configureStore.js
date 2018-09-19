@@ -3,12 +3,12 @@ import createSagaMiddleware from 'redux-saga';
 
 import rootSaga from '../saga';
 import { rootReducer } from '../reducers';
+import config from '../../config'
 
-const reduxDevtools = window.__REDUX_DEVTOOLS_EXTENSION__;
 const sagaMiddleware = createSagaMiddleware();
 
-const composes = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-const store = createStore(rootReducer, composes(applyMiddleware(sagaMiddleware)))
+const composes = config.isActiveDevTool ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__:compose;
+const store = createStore(rootReducer, composes(applyMiddleware(sagaMiddleware)));
 
 sagaMiddleware.run(rootSaga);
 

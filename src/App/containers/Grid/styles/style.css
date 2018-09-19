@@ -1,0 +1,11 @@
+.grid_constrolls{
+    display: flex;
+    justify-content: space-between;
+}
+.grid_search{
+    width: 550px;
+}
+.grid_filter{
+    width: 250px;
+    /* height: 100px; */
+}
