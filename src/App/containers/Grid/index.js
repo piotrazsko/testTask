@@ -27,7 +27,7 @@ class Grid extends Component {
         this.getNextPage = this.getNextPage.bind(this);
         this.state = {
             sotred_key: null,
-            filter_gender: null,
+            filter_gender: false,
             search_string: null,
             current_page:1
         }
@@ -105,7 +105,7 @@ class Grid extends Component {
             })
         }
 
-        if (filter_gender !== null) {
+        if (filter_gender ) {
             users = users.filter(user => {
                 return user.gender === filter_gender;
             })
@@ -120,7 +120,7 @@ class Grid extends Component {
                             name: 'gender',
                             id: 'gender-simple'
                         }}>
-                        <MenuItem value={null}>
+                        <MenuItem value={false}>
                             <em>None</em>
                         </MenuItem>
                         <MenuItem value={'male'}>Male</MenuItem>
