@@ -9,6 +9,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
 
 import * as actions from './actions';
 import selectors from './selectors';
@@ -43,9 +44,11 @@ class Grid extends Component {
     componentWillMount() {
         let {actions: {
                 getUsersDataRequest
-            }} = this.props;
+            },users} = this.props;
             const { current_page }= this.state;
-        getUsersDataRequest(current_page);
+            if(users.length===0){
+                getUsersDataRequest(current_page);
+            }
     }
 
     selectChangeHandler(event) {
@@ -70,7 +73,8 @@ class Grid extends Component {
         let {actions: {
                 getUsersDataRequest
             }} = this.props;
-        getUsersDataRequest(current_page--);
+        current_page = current_page > 1 ? current_page - 1 : 1;
+        getUsersDataRequest(current_page);
         this.setState({current_page})
 
     }
@@ -86,7 +90,6 @@ class Grid extends Component {
 
     render() {
         let {users} = this.props;
-
         const head_data = [
             {name:'Photo',key:'photo'},
             {name:'First name',key:'first_name'},
@@ -94,7 +97,7 @@ class Grid extends Component {
             {name:'Gender',key:'gender'},
         ]
 
-        const {search_string, filter_gender} = this.state;
+        const {search_string, filter_gender,current_page} = this.state;
 
         if (search_string !== null) {
             users = users.filter(user => {
@@ -125,7 +128,15 @@ class Grid extends Component {
                     </Select>
                 </FormControl>
             </div>
-            <div><button onClick={this.getPrevPage}>prev</button><button onClick={this.getNextPage}>next</button></div>
+            <div>
+                <Button onClick={this.getPrevPage} color="primary">
+                    {'<'}
+                </Button>
+                <span className="grid_current__page">{current_page}</span>
+                <Button onClick={this.getNextPage} color="primary">
+                    {'>'}
+                </Button>
+            </div>
             <SimpleTable rows_data={users} head_data={head_data} headerClickHandler = {this.headerClickHandler}/>
         </div>);
     }

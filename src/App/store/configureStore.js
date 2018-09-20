@@ -1,5 +1,6 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { persistStore } from 'redux-persist';
 
 import rootSaga from '../saga';
 import { rootReducer } from '../reducers';
@@ -11,5 +12,6 @@ const composes = config.isActiveDevTool ? window.__REDUX_DEVTOOLS_EXTENSION_COMP
 const store = createStore(rootReducer, composes(applyMiddleware(sagaMiddleware)));
 
 sagaMiddleware.run(rootSaga);
+const persistor = persistStore(store);
 
-export {store}
+export {store , persistor}
